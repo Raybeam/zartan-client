@@ -15,6 +15,8 @@ And then execute:
 ## Usage
 
 ```ruby
+require 'zartan/client'
+
 # Create a client object
 client = Zartan::Client.new(host: 'http://ZARTAN_HOST:ZARTAN_PORT', api_key: 'YOUR-API-KEY')
 
