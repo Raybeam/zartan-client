@@ -1,29 +1,33 @@
 # Zartan::Client
 
-TODO: Write a gem description
+Ruby client for [Zartan](https://github.com/Raybeam/zartan/)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'zartan-client'
+    gem 'zartan-client', git: 'https://github.com/Raybeam/zartan-client.git'
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install zartan-client
-
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# Create a client object
+client = Zartan::Client.new(host: 'http://ZARTAN_HOST:ZARTAN_PORT', api_key: 'YOUR-API-KEY')
 
-## Contributing
+# Construct a new site object
+site = client.sites[SITE_NAME]
 
-1. Fork it ( https://github.com/[my-github-username]/zartan-client/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+# Get a new proxy for the site
+proxy = site.get_proxy
+
+# Get the proxy's info
+puts "Proxy #{proxy.id} (#{proxy.host}:#{proxy.port})"
+
+# Report the proxy's performace on that site
+proxy.report_success
+proxy.report_failure
+```
