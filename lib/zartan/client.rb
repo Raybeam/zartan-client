@@ -8,10 +8,13 @@ require 'json'
 
 module Zartan
   class Client
-    def initialize(host:, api_key:, max_auth_retries: 3)
+    attr_accessor :max_proxy_retries
+    
+    def initialize(host:, api_key:, max_auth_retries: 3, max_proxy_retries: 5)
       @service = Zartan::Service.new(host, api_key)
       @client_id = Zartan::Service::ZERO_CLIENT_ID
       @max_auth_retries = max_auth_retries
+      @max_proxy_retries = max_proxy_retries
     end
     
     def authenticate
@@ -48,6 +51,10 @@ module Zartan
           raise MalformedResponse, "Unexpected response: #{response.inspect}"
         end
       end
+    end
+    
+    def sites
+      ::Zartan::Site::Factory.new(self)
     end
     
 
