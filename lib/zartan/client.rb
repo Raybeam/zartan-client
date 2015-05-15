@@ -42,7 +42,7 @@ module Zartan
     
     def report(site_name, proxy_id, status, opts = {})
       reauthenticating_if_necessary do
-        response = post @service.report_uri(site_name, proxy_id, opts.merge(client_id: @client_id))
+        response = post @service.report_uri(site_name, proxy_id, status, opts.merge(client_id: @client_id))
         if response['result'] == 'success'
           response
         elsif is_client_id_error? response
