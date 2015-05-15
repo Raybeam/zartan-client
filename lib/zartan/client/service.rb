@@ -34,7 +34,7 @@ module Zartan
     private
     def zartan_uri(*parts)
       opts = parts.pop if parts.last.is_a? Hash
-      uri = URI( File.join(@host, *parts) )
+      uri = URI( File.join(@host, *parts.map(&:to_s)) )
       uri.query = URI.encode_www_form opts if opts
       uri
     end
