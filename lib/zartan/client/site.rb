@@ -27,6 +27,7 @@ module Zartan
       
       raise NoProxiesAvailable, "Failed to retrieve any proxies after retrying max_proxy_retries (#{@client.max_proxy_retries}) times."
     end
+    NoProxiesAvailable = Class.new(StandardError)
     
     class Factory
       def initialize(client)
