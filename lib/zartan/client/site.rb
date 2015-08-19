@@ -17,7 +17,9 @@ module Zartan
             site: self,
             id: response['payload']['id'],
             host: response['payload']['host'],
-            port: response['payload']['port']
+            port: response['payload']['port'],
+            username: response['payload']['username'],
+            password: response['payload']['password']
           )
         else
           # response['status'] == 'please_retry'

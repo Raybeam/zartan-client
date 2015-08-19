@@ -3,12 +3,16 @@ module Zartan
     attr_reader :id
     attr_reader :host
     attr_reader :port
+    attr_reader :username
+    attr_reader :password
     
-    def initialize(site:, id:, host:, port:)
+    def initialize(site:, id:, host:, port:, username:, password:)
       @site = site
       @id = id
       @host = host
       @port = port
+      @username = username
+      @password = password
     end
     
     def report_success
